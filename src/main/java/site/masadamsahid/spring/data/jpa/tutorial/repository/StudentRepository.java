@@ -2,6 +2,7 @@ package site.masadamsahid.spring.data.jpa.tutorial.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import site.masadamsahid.spring.data.jpa.tutorial.entity.Student;
 
@@ -31,5 +32,12 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     nativeQuery = true
   )
   Student getStudentByEmailAddressNative(String emailId);
+  
+  // Using native and using named query param instead of positional query param
+  @Query(
+    value = "SELECT * FROM tbl_student s WHERE  s.email_address = :emailId",
+    nativeQuery = true
+  )
+  Student getStudentByEmailAddressNativeNamedParam(@Param("emailId") String emailId);
   
 }
