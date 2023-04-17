@@ -67,4 +67,10 @@ class StudentRepositoryTest {
     System.out.println("students = " + students);
   }
   
+  @Test
+  public void printStudentsBasedOnGuardianName(){
+    List<Student> students = studentRepository.findByGuardianName("Hardi");
+    System.out.println("students = " + students);
+  }
+  
 }
