@@ -61,4 +61,10 @@ class StudentRepositoryTest {
     System.out.println("students = " + students);
   }
   
+  @Test
+  public void printStudentsByFirstNameContaining(){
+    List<Student> students = studentRepository.findByFirstNameContaining("M");
+    System.out.println("students = " + students);
+  }
+  
 }
