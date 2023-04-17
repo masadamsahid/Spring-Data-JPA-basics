@@ -8,8 +8,6 @@ import site.masadamsahid.spring.data.jpa.tutorial.entity.Student;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class StudentRepositoryTest {
   
@@ -54,6 +52,13 @@ class StudentRepositoryTest {
   public void printAllStudents(){
     List<Student> studentList = studentRepository.findAll();
     System.out.println("studentList = " + studentList);
+  }
+  
+  @Test
+  public void printStudentsByFirstName(){
+    List<Student> students = studentRepository.findByFirstName("Adam");
+  
+    System.out.println("students = " + students);
   }
   
 }
