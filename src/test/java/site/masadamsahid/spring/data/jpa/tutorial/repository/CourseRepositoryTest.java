@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import site.masadamsahid.spring.data.jpa.tutorial.entity.Course;
+import site.masadamsahid.spring.data.jpa.tutorial.entity.Student;
 import site.masadamsahid.spring.data.jpa.tutorial.entity.Teacher;
 
 import java.util.List;
@@ -75,6 +76,30 @@ class CourseRepositoryTest {
       .getContent();
   
     System.out.println("courses = " + courses);
+  }
+  
+  @Test
+  public void saveCourseWithStudentAndTeacher(){
+    Teacher teacher = Teacher.builder()
+      .firstName("Rehcaet")
+      .lastName("Laicifitra")
+      .build();
+  
+    Student student = Student.builder()
+      .firstName("Tneduts")
+      .lastName("Laicifitra")
+      .emailId("laicifitra.tneduts@gmail.com")
+      .build();
+    
+    Course course = Course.builder()
+      .title("AI")
+      .credit(12)
+      .teacher(teacher)
+      .build();
+    
+    course.addStudent(student);
+    
+    courseRepository.save(course);
   }
   
 }
